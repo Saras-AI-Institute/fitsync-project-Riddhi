@@ -74,9 +74,20 @@ def calculate_recovery_score(df):
 
     return df
 
-# Example of how to call the function
-# cleaned_data = load_data()
-# print(cleaned_data.head())
-# df_with_recovery = calculate_recovery_score(cleaned_data)
-# print(df_with_recovery.head())
+def process_data():
+    """
+    Main function to process data for the Streamlit dashboard.
+    Loads the data, calculates recovery scores, and returns the processed DataFrame.
+    """
+    # Load the cleaned DataFrame
+    df = load_data()
+
+    # Calculate and add the Recovery Score
+    df = calculate_recovery_score(df)
+
+    return df
+
+# This will be the main function used by the Streamlit dashboard
+# processed_data = process_data()
+# print(processed_data.head())
 
