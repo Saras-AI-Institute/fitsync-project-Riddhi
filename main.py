@@ -1,4 +1,9 @@
 # Title of the Streamlit app
+import streamlit as st
+import pandas as pd
+from modules.processor import process_data
+
+
 st.title("FitSync - Personal Health Analytics")
 
 # Add a sidebar filter for time range selection
