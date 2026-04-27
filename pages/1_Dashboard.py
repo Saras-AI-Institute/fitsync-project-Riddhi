@@ -21,8 +21,13 @@ time_range = st.sidebar.selectbox(
     index=2
 )
 
-# Load the data
-df = process_data()
+# Load the data with caching
+@st.cache_data
+def load_data():
+    return process_data()
+
+# Use cached data retrieval
+df = load_data()
 
 # Filter the dataframe based on the time range selection
 def filter_dataframe(df, time_range):
@@ -75,3 +80,4 @@ right_col2.plotly_chart(fig4, use_container_width=True)
 
 # Static informative text
 st.info("This dashboard allows you to track and analyze your health metrics efficiently and effectively. 📊")
+

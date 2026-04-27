@@ -23,8 +23,13 @@ def filter_dataframe(df, time_range):
     else:
         return df
 
-# Load and filter data
-df = process_data()
+# Load and cache data
+@st.cache_data
+def load_data():
+    return process_data()
+
+# Use cached data retrieval
+df = load_data()
 
 # Check for 'calories_burned' column presence
 if 'calories_burned' not in df.columns:
@@ -67,3 +72,4 @@ else:
     # Histogram for Sleep Hours
     fig_sleep = px.histogram(filtered_df, x='sleep_hours', nbins=50, title='Sleep Hours Distribution')
     col4.plotly_chart(fig_sleep, use_container_width=True)
+
